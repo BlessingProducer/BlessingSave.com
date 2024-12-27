@@ -1,0 +1,50 @@
+---
+import SEOTitle from "./SEOTitle.astro";
+import SEOContent from "./SEOContent.astro";
+import FAQItem from "./FAQItem.astro";
+class FAQItemModel {
+    question: string;
+    answer: string
+}
+interface Props {
+    introduceTitle: String;
+    introduceContent: String;
+    featuresTitle: String;
+    featuresContents: String[];
+    FAQTitle: String;
+    FAQItems: FAQItemModel[]
+}
+const {
+    introduceTitle,
+    introduceContent,
+    featuresTitle,
+    featuresContents,
+    FAQTitle,
+    FAQItems
+} = Astro.props;
+---
+<main>
+    <div class="container mx-auto my-10 p-4">
+        <SEOTitle content={introduceTitle}/>
+        <SEOContent content={introduceContent}/>
+        <SEOTitle content={featuresTitle}/>
+        {featuresContents && featuresContents.map((item: any) => (
+                <SEOContent content={item}/>
+        ))}
+
+        <SEOTitle content={FAQTitle}/>
+
+        <div id="accordion-flush"
+             data-accordion="collapse"
+             itemscope
+             itemtype="https://schema.org/FAQPage">
+            {FAQItems && FAQItems.map((item: FAQItemModel, index) => (
+                    <FAQItem
+                            key={index}
+                            question={item.question}
+                            answer={item.answer}
+                    />
+            ))}
+        </div>
+    </div>
+</main>

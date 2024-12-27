@@ -1,0 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  scrollbar-width: thin;
+  scrollbar-color: #fb7185 #fb7185;
+}
