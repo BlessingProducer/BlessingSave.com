@@ -45,7 +45,7 @@ const InputForm: React.FC<Props> = ({
     }
 
     return (
-        <div className="flex flex-col justify-center items-center bg-rose-400 dark:bg-white py-10">
+        <div className="flex flex-col justify-center items-center bg-rose-400 dark:bg-white py-14">
             <h1 className="text-2xl sm:text-4xl text-white dark:text-gray-800 font-semibold">
                 {title}
             </h1>
@@ -66,7 +66,7 @@ const InputForm: React.FC<Props> = ({
                                    }}/>
                             <button type="button"
                                     onClick={url ? handleClear : handlePaste}
-                                    className="flex items-center justify-center top-0 end-0 px-4 py-2.5 w-auto h-full text-sm font-medium text-white bg-pink-950 hover:bg-pink-900 rounded-e-lg dark:bg-gray-800 dark:hover:bg-blue-700">
+                                    className="flex items-center justify-center top-0 end-0 py-2.5 w-32 h-full text-sm font-medium text-white bg-pink-950 hover:bg-pink-900 rounded-e-lg dark:bg-gray-800 dark:hover:bg-blue-700">
                                 {url ? <AiOutlineClear className={"w-5 h-5"}/>
                                     : <FaPaste className={"w-4 h-4"}/>}
                                 <span
@@ -82,7 +82,7 @@ const InputForm: React.FC<Props> = ({
                     </div>
                 </div>
                 <button type="button"
-                        className="mt-2.5 sm:ms-2 sm:mt-0 px-5 py-2.5 w-full flex items-center justify-center sm:w-auto text-white bg-pink-950 hover:bg-pink-900 font-medium rounded-lg text-sm dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none"
+                        className="mt-2.5 sm:ms-2 sm:mt-0 py-2.5 w-full sm:w-48  flex items-center justify-center text-white bg-pink-950 hover:bg-pink-900 font-medium rounded-lg text-sm dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none"
                         onClick={handleSubmit}>
                     <MdOutlineFileDownload className={"w-5 h-5 me-1"}/>
                     {formSubmitButtonTitle}
