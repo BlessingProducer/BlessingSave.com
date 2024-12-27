@@ -22,7 +22,7 @@ const App: React.FC<Props> = ({
                               }) => {
     return (
         <div
-            className="w-full h-screen overflow-hidden">
+            className="w-full overflow-hidden">
             <InputForm
                 title={formTitle}
                 instructions={formDescription}

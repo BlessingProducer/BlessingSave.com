@@ -3,6 +3,7 @@ import SEOTitle from "./SEOTitle.astro";
 import SEOContent from "./SEOContent.astro";
 import FAQItem from "./FAQItem.astro";
 class FAQItemModel {
+    id:string;
     question: string;
     answer: string
 }
@@ -38,9 +39,9 @@ const {
              data-accordion="collapse"
              itemscope
              itemtype="https://schema.org/FAQPage">
-            {FAQItems && FAQItems.map((item: FAQItemModel, index) => (
+            {FAQItems && FAQItems.map((item: FAQItemModel) => (
                     <FAQItem
-                            key={index}
+                            id={item.id}
                             question={item.question}
                             answer={item.answer}
                     />
