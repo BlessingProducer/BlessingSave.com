@@ -1,11 +1,45 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import App from "../App";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Scrollbar from "../components/Scrollbar.astro";
+import SEOContainer from "../components/SEOContainer.astro";
+import en from "../languages/en.json";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const props = {
+    formTitle: en.form.formTitle,
+    formDescription: en.form.formDescription,
+    formType: "tt",
+    formPlaceholder: en.form.formPlaceholder,
+    formPasteButtonTitle: en.form.formPasteButtonTitle,
+    formClearButtonTitle: en.form.formClearButtonTitle,
+    formSubmitButtonTitle: en.form.formSubmitButtonTitle,
+}
 ---
-
-<Layout>
-
+<Layout
+        site="https://blessingsave.com"
+        title={en.site.title}
+        description={en.site.description}
+>
+    <Scrollbar>
+        <Header
+                tiktokButtonTitle={en.header.tiktokButtonTitle}
+                facebookButtonTitle={en.header.facebookButtonTitle}
+                instagramButtonTitle={en.header.instagramButtonTitle}
+                languageButtonTitle={en.header.languageButtonTitle}
+        />
+        <App
+                client:load {...props}
+        />
+        <SEOContainer
+                introduceTitle={en.SEOContainer.introduce.title}
+                introduceContent={en.SEOContainer.introduce.content}
+                featuresTitle={en.SEOContainer.feature.title}
+                featuresContents={en.SEOContainer.feature.contents}
+                FAQTitle={en.SEOContainer.faq.title}
+                FAQItems={en.SEOContainer.faq.items}
+        />
+        <Footer/>
+    </Scrollbar>
 </Layout>

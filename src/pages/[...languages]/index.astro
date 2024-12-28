@@ -1,0 +1,54 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import App from '../../App'
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import Scrollbar from "../../components/Scrollbar.astro";
+import SEOContainer from "../../components/SEOContainer.astro";
+
+const params = Astro.url.pathname.split("/");
+const languageCodes = params[1] || "en";
+let language;
+
+try {
+    language = await import(`../../languages/${languageCodes}.json`);
+} catch (error) {
+    language = await import(`../../languages/en.json`);
+}
+
+const props = {
+    formTitle: language.form.formTitle,
+    formDescription: language.form.formDescription,
+    formType: "tt",
+    formPlaceholder: language.form.formPlaceholder,
+    formPasteButtonTitle: language.form.formPasteButtonTitle,
+    formClearButtonTitle: language.form.formClearButtonTitle,
+    formSubmitButtonTitle: language.form.formSubmitButtonTitle,
+}
+---
+<Layout
+        site="https://blessingsave.com"
+        title={language.site.title}
+        description={language.site.description}
+>
+    <Scrollbar>
+        <Header
+                tiktokButtonTitle={language.header.tiktokButtonTitle}
+                facebookButtonTitle={language.header.facebookButtonTitle}
+                instagramButtonTitle={language.header.instagramButtonTitle}
+                languageButtonTitle={language.header.languageButtonTitle}
+        />
+        <App
+                client:load {...props}
+        />
+        <SEOContainer
+                introduceTitle={language.SEOContainer.introduce.title}
+                introduceContent={language.SEOContainer.introduce.content}
+                featuresTitle={language.SEOContainer.feature.title}
+                featuresContents={language.SEOContainer.feature.contents}
+                FAQTitle={language.SEOContainer.faq.title}
+                FAQItems={language.SEOContainer.faq.items}
+        />
+        <Footer/>
+    </Scrollbar>
+</Layout>
