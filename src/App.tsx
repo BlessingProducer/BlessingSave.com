@@ -1,5 +1,8 @@
 import React from 'react';
 import InputForm from "./components/InputForm.tsx";
+import {Provider} from "react-redux";
+import store from "./redux/store.ts";
+import Container from "./Container.tsx";
 
 interface Props {
     formTitle: string;
@@ -21,17 +24,19 @@ const App: React.FC<Props> = ({
                                   formSubmitButtonTitle,
                               }) => {
     return (
-        <div
-            className="w-full overflow-hidden">
-            <InputForm
-                title={formTitle}
-                instructions={formDescription}
-                type={formType}
-                formPlaceholder={formPlaceholder}
-                formPasteButtonTitle={formPasteButtonTitle}
-                formClearButtonTitle={formClearButtonTitle}
-                formSubmitButtonTitle={formSubmitButtonTitle}/>
-        </div>
+        <Provider store={store}>
+            <div
+                className="w-full overflow-hidden">
+                <Container
+                    formTitle={formTitle}
+                    formDescription={formDescription}
+                    formType={formType}
+                    formPlaceholder={formPlaceholder}
+                    formPasteButtonTitle={formPasteButtonTitle}
+                    formClearButtonTitle={formClearButtonTitle}
+                    formSubmitButtonTitle={formSubmitButtonTitle}/>
+            </div>
+        </Provider>
     );
 };
 
