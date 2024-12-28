@@ -25,6 +25,5 @@ pnpm-debug.log*
 .vscode/
 package-lock.json
 
-.yarn
-.wrangler
+.yarn/cache
 
