@@ -2,9 +2,6 @@
 import {defineConfig} from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
 import react from '@astrojs/react';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 import tailwind from '@astrojs/tailwind';
 

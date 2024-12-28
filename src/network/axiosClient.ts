@@ -1,7 +1,4 @@
 import axios from 'axios'
-import dotenv from 'dotenv'
-
-// dotenv.config()
 
 const apiUrl ="http://127.0.0.1:5000"
 
