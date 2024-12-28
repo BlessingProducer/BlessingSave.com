@@ -1,4 +1,5 @@
 ---
+import ReduxProvider from "../redux/ReduxProvider";
 interface Props {
     site: string,
     title: string,
@@ -48,10 +49,12 @@ const image = "/logo.webp";
 
     <meta name="generator" content={Astro.generator}/>
     <link rel="stylesheet" href="/stylesheet/styles.css"/>
+    <script src="../../node_modules/flowbite/dist/flowbite.min.js"></script>
 </head>
 <body class="w-screen h-screen overflow-hidden ">
-<slot id="root"/>
-<script is:inline src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+<!--<ReduxProvider client:only="react">-->
+    <slot/>
+<!--</ReduxProvider>-->
 </body>
 </html>
 
