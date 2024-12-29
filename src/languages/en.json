@@ -12,7 +12,7 @@
   "form": {
     "formTitle": "Tiktok Video Downloader",
     "formDescription": "Download Tiktok Video to Mp4",
-    "formPlaceholder": "Enter Tiktok link here",
+    "formPlaceholder": "Enter the Tiktok link here",
     "formPasteButtonTitle": "Paste",
     "formClearButtonTitle": "Clear",
     "formSubmitButtonTitle": "Download"

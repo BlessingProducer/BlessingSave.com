@@ -3,11 +3,11 @@ import {FaPaste} from "react-icons/fa";
 import {AiOutlineClear} from "react-icons/ai";
 import {MdOutlineFileDownload} from "react-icons/md";
 import {MdError} from "react-icons/md";
-import stateStatus from "../utils/stateStatus.ts";
+import stateStatus from "../utils/stateStatus";
 import {useDispatch, useSelector} from "react-redux";
-import {postUrl, resetPostUrlState} from "../redux/slices/tiktokSlice.ts";
+import {postUrl, resetPostUrlState} from "../redux/slices/tiktokSlice";
 import type {AppDispatch, RootState} from "../redux/store.ts";
-import Loading from "./Loading.tsx";
+import Loading from "./Loading";
 
 interface Props {
     title: string;
