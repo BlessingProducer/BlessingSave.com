@@ -6,12 +6,21 @@ import Footer from "../../components/Footer.astro";
 import Scrollbar from "../../components/Scrollbar.astro";
 import SEOContainer from "../../components/SEOContainer.astro";
 
-const params = Astro.url.pathname.split("/");
-const languageCodes = params[1] || "en";
+export async function getStaticPaths() {
+    const languages = ['br', 'cn', 'cz', 'de', 'en', 'es', 'fr', 'id', 'il', 'in', 'ir', 'it',
+        'jp', 'kr', 'my', 'nl', 'pl', 'ro', 'ru', 'sa', 'se', 'th', 'tr', 'vi'];
+    return languages.map(lang => ({
+        params: {languages: lang}
+    }));
+}
+
+const {languages} = Astro.params;
+const languageCode = languages || 'en';
+
 let language;
 
 try {
-    language = await import(`../../languages/${languageCodes}.json`);
+    language = await import(`../../languages/${languageCode}.json`);
 } catch (error) {
     language = await import(`../../languages/en.json`);
 }
