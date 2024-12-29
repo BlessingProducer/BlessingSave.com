@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const apiUrl ="http://127.0.0.1:5000"
+const apiUrl ="https://blessingsoftware.dev"
 
 const axiosClient = axios.create({
     baseURL: apiUrl,
