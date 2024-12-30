@@ -1,17 +1,17 @@
 ---
-import ReduxProvider from "../redux/ReduxProvider";
 interface Props {
-    site: string,
-    title: string,
+    lang: string;
+    site: string;
+    title: string;
     description: string
 }
 
-const {site, title, description} = Astro.props;
+const {lang, site, title, description} = Astro.props;
 const image = "/logo.webp";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
@@ -46,15 +46,51 @@ const image = "/logo.webp";
 
     <link rel="alternate" hreflang="x-default" href={site}/>
     <link rel="canonical" href={site}/>
+    <link rel="alternate" hreflang="br" href={`${site}/br`}/>
+    <link rel="alternate" hreflang="cn" href={`${site}/cn`}/>
+    <link rel="alternate" hreflang="cz" href={`${site}/cz`}/>
+    <link rel="alternate" hreflang="de" href={`${site}/de`}/>
+    <link rel="alternate" hreflang="en" href={`${site}/en`}/>
+    <link rel="alternate" hreflang="es" href={`${site}/es`}/>
+    <link rel="alternate" hreflang="fr" href={`${site}/fr`}/>
+    <link rel="alternate" hreflang="id" href={`${site}/id`}/>
+    <link rel="alternate" hreflang="il" href={`${site}/il`}/>
+    <link rel="alternate" hreflang="in" href={`${site}/in`}/>
+    <link rel="alternate" hreflang="ir" href={`${site}/ir`}/>
+    <link rel="alternate" hreflang="it" href={`${site}/it`}/>
+    <link rel="alternate" hreflang="jp" href={`${site}/jp`}/>
+    <link rel="alternate" hreflang="kr" href={`${site}/kr`}/>
+    <link rel="alternate" hreflang="my" href={`${site}/my`}/>
+    <link rel="alternate" hreflang="nl" href={`${site}/nl`}/>
+    <link rel="alternate" hreflang="pl" href={`${site}/pl`}/>
+    <link rel="alternate" hreflang="ro" href={`${site}/ro`}/>
+    <link rel="alternate" hreflang="ru" href={`${site}/ru`}/>
+    <link rel="alternate" hreflang="sa" href={`${site}/sa`}/>
+    <link rel="alternate" hreflang="se" href={`${site}/se`}/>
+    <link rel="alternate" hreflang="th" href={`${site}/th`}/>
+    <link rel="alternate" hreflang="tr" href={`${site}/tr`}/>
+    <link rel="alternate" hreflang="vi" href={`${site}/vi`}/>
 
     <meta name="generator" content={Astro.generator}/>
     <link rel="stylesheet" href="/stylesheet/styles.css"/>
     <script src="../../node_modules/flowbite/dist/flowbite.min.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VTRLS6GNTH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-VTRLS6GNTH');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2654786155149859"
+            crossorigin="anonymous"></script>
 </head>
 <body class="w-screen h-screen overflow-hidden ">
-<!--<ReduxProvider client:only="react">-->
-    <slot/>
-<!--</ReduxProvider>-->
+<slot/>
 </body>
 </html>
 
