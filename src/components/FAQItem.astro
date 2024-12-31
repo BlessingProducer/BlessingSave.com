@@ -8,27 +8,28 @@ interface Props {
 const {id, question, answer} = Astro.props;
 ---
 
-<h2 id=`accordion-flush-heading-${id}`
-    itemscope
-    itemprop="mainEntity"
-    itemtype="https://schema.org/Question">
-    <button type="button"
-            itemprop="name"
-            class="flex items-center w-full p-5 font-medium bg-rose-400 text-left text-white border border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-white hover:text-rose-500 hover:ring-1 ring-rose-500  dark:hover:bg-gray-800"
-            data-accordion-target=`#accordion-flush-body-${id}`
-            aria-expanded="false"
-            aria-controls=`accordion-flush-body-${id}`>
-        {question}
-    </button>
-</h2>
-<div id=`accordion-flush-body-${id}`
-     class="hidden"
-     itemtype="https://schema.org/Answer"
+<div id=`accordion-flush-heading-${id}`
      itemscope
-     aria-labelledby=`accordion-flush-heading-${id}`
-     itemprop="acceptedAnswer">
-    <p class="p-5 border border-t-0 border-gray-200 dark:border-gray-700 text-rose-950"
-       itemprop="text">
-        {answer}
-    </p>
+     itemprop="mainEntity"
+     itemtype="https://schema.org/Question">
+    <h2 itemprop="name">
+        <button type="button"
+                class="flex items-center w-full p-5 font-medium bg-rose-400 text-left text-white border border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-white hover:text-rose-500 hover:ring-1 ring-rose-500  dark:hover:bg-gray-800"
+                data-accordion-target=`#accordion-flush-body-${id}`
+                aria-expanded="false"
+                aria-controls=`accordion-flush-body-${id}`>
+            {question}
+        </button>
+    </h2>
+    <div id=`accordion-flush-body-${id}`
+         class="hidden"
+         itemtype="https://schema.org/Answer"
+         itemscope
+         aria-labelledby=`accordion-flush-heading-${id}`
+         itemprop="acceptedAnswer">
+        <p class="p-5 border border-t-0 border-gray-200 dark:border-gray-700 text-rose-950"
+           itemprop="text">
+            {answer}
+        </p>
+    </div>
 </div>
