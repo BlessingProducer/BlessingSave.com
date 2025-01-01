@@ -1,6 +1,6 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import axiosClient from "../../network/axiosClient.ts";
-import stateStatus from "../../utils/stateStatus.ts";
+import axiosClient from "../../network/axiosClient";
+import stateStatus from "../../utils/stateStatus";
 
 const endpoint = 'tiktok';
 

@@ -1,8 +1,8 @@
 import React from 'react'
-import InputForm from "./components/InputForm.tsx";
+import InputForm from "./components/InputForm";
 import {useSelector} from "react-redux";
 import type {RootState} from "./redux/store.ts";
-import DownloadContainer from "./components/DownloadContainer.tsx";
+import DownloadContainer from "./components/DownloadContainer";
 
 interface Props {
     formTitle: string;
