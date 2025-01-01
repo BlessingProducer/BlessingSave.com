@@ -36,14 +36,19 @@ const initialState: TiktokState = {
 
 export const postUrl = createAsyncThunk<Data, {
     url: string;
+    lang: string;
 }, {
     rejectValue: RejectValue
 }>(
     'tiktok/postUrl',
-    async ({url}, {rejectWithValue}) => {
+    async ({url, lang}, {rejectWithValue}) => {
         try {
             const response = await axiosClient.post(endpoint, {
                 url: url,
+            }, {
+                params: {
+                    lang: lang
+                }
             });
 
             if (response.status === 200) {
@@ -61,7 +66,7 @@ export const postUrl = createAsyncThunk<Data, {
             return rejectWithValue({
                 code: 500,
                 status: '',
-                message: '',
+                message: 'Server error',
             });
         }
     }

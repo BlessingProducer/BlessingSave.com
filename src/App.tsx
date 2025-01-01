@@ -4,9 +4,9 @@ import store from "./redux/store";
 import Container from "./Container";
 
 interface Props {
+    lang:string;
     formTitle: string;
     formDescription: string;
-    formType: string;
     formPlaceholder: string;
     formPasteButtonTitle: string;
     formClearButtonTitle: string;
@@ -14,9 +14,9 @@ interface Props {
 }
 
 const App: React.FC<Props> = ({
+    lang,
                                   formTitle,
                                   formDescription,
-                                  formType,
                                   formPlaceholder,
                                   formPasteButtonTitle,
                                   formClearButtonTitle,
@@ -27,9 +27,9 @@ const App: React.FC<Props> = ({
             <div
                 className="w-full overflow-hidden">
                 <Container
+                    lang={lang}
                     formTitle={formTitle}
                     formDescription={formDescription}
-                    formType={formType}
                     formPlaceholder={formPlaceholder}
                     formPasteButtonTitle={formPasteButtonTitle}
                     formClearButtonTitle={formClearButtonTitle}

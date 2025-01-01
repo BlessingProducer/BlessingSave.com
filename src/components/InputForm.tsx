@@ -10,9 +10,9 @@ import type {AppDispatch, RootState} from "../redux/store.ts";
 import Loading from "./Loading";
 
 interface Props {
+    lang: string;
     title: string;
     instructions: string;
-    type: string;
     formPlaceholder: string;
     formPasteButtonTitle: string;
     formClearButtonTitle: string;
@@ -20,9 +20,9 @@ interface Props {
 }
 
 const InputForm: React.FC<Props> = ({
+                                        lang,
                                         title,
                                         instructions,
-                                        type,
                                         formPlaceholder,
                                         formPasteButtonTitle,
                                         formClearButtonTitle,
@@ -66,7 +66,7 @@ const InputForm: React.FC<Props> = ({
 
     const handleSubmit = () => {
         if (url && url.trim() !== "") {
-            dispatch(postUrl({url}))
+            dispatch(postUrl({url,lang}))
         }
     }
 
@@ -115,7 +115,7 @@ const InputForm: React.FC<Props> = ({
                         onClick={handleSubmit}>
                     {
                         postUrlStatus === stateStatus.loadingState ?
-                           <Loading/>
+                            <Loading/>
                             :
                             <div className={"flex"}>
                                 <MdOutlineFileDownload className={"w-5 h-5 me-1"}/>

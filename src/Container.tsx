@@ -5,9 +5,9 @@ import type {RootState} from "./redux/store.ts";
 import DownloadContainer from "./components/DownloadContainer";
 
 interface Props {
+    lang:string;
     formTitle: string;
     formDescription: string;
-    formType: string;
     formPlaceholder: string;
     formPasteButtonTitle: string;
     formClearButtonTitle: string;
@@ -15,9 +15,9 @@ interface Props {
 }
 
 const Container: React.FC<Props> = ({
+                                        lang,
                                         formTitle,
                                         formDescription,
-                                        formType,
                                         formPlaceholder,
                                         formPasteButtonTitle,
                                         formClearButtonTitle,
@@ -29,9 +29,9 @@ const Container: React.FC<Props> = ({
             {
                 data ? <DownloadContainer/>
                     : <InputForm
+                        lang={lang}
                         title={formTitle}
                         instructions={formDescription}
-                        type={formType}
                         formPlaceholder={formPlaceholder}
                         formPasteButtonTitle={formPasteButtonTitle}
                         formClearButtonTitle={formClearButtonTitle}
