@@ -7,8 +7,9 @@ import Scrollbar from "../../components/Scrollbar.astro";
 import SEOContainer from "../../components/SEOContainer.astro";
 
 export async function getStaticPaths() {
-    const languages = ['br', 'cn', 'cz', 'de', 'en', 'es', 'fr', 'id', 'il', 'in', 'ir', 'it',
-        'jp', 'kr', 'my', 'nl', 'pl', 'ro', 'ru', 'sa', 'se', 'th', 'tr', 'vi'];
+    const languages = ['ar', 'cs', 'de', 'en', 'es', 'fa', 'fr', 'he', 'hi', 'id', 'it', 'ja', 'ko',
+        'ms', 'nl', 'pl', 'pt', 'ro', 'ru', 'se', 'th', 'tr', 'vi', 'zh'];
+
     return languages.map(lang => ({
         params: {languages: lang}
     }));

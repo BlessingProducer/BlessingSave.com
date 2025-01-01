@@ -1,8 +1,7 @@
 import React from 'react';
-import InputForm from "./components/InputForm.tsx";
 import {Provider} from "react-redux";
-import store from "./redux/store.ts";
-import Container from "./Container.tsx";
+import store from "./redux/store";
+import Container from "./Container";
 
 interface Props {
     formTitle: string;

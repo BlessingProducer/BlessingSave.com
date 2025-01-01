@@ -1,7 +1,7 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import type {AppDispatch, RootState} from "../redux/store.ts";
-import {resetPostUrlState} from "../redux/slices/tiktokSlice.ts";
+import {resetPostUrlState} from "../redux/slices/tiktokSlice";
 
 const randomFileName = (quantity: string, extension: string): string => {
     const randomNumber = Math.floor(10000 + Math.random() * 90000);
