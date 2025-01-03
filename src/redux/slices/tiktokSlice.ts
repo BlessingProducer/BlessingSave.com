@@ -6,7 +6,6 @@ const endpoint = 'tiktok';
 
 interface Data {
     thumbnail: string;
-    gif: string;
     WVGA: string;
     DVGA: string;
     HD: string;
