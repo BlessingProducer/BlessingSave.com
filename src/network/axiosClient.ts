@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-// const apiUrl ="https://blessingsoftware.dev"
-const apiUrl = "http://localhost:8000"
+const apiUrl ="https://blessingsoftware.dev"
+// const apiUrl = "http://localhost:8000"
 
 const axiosClient = axios.create({
     baseURL: apiUrl,
