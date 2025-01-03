@@ -6,7 +6,7 @@ interface Props {
 
 const DownloadTitle: React.FC<Props> = ({title}) => {
     return (
-        <h2 className={"text-rose-500 font-bold text-sm sm:text-xl"}>{title}</h2>
+        <h2 className={"text-rose-500 font-bold text-sm xl:text-xl"}>{title}</h2>
     )
 }
 

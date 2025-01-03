@@ -64,20 +64,20 @@ const DownloadContainer: React.FC = () => {
     }
 
     return (
-        <div className={"px-3.5 sm:px-10 md:px-12 lg:px-48"}>
+        <div className={"px-3 py-5 lg:px-36"}>
             {data ? (
                 <div
                     className="w-full h-[500px] flex flex-col md:flex-row items-center justify-center md:justify-between md:space-x-32">
-                    <div className="w-full h-36 lg:h-48 shadow rounded-lg bg-gray-50 p-2.5">
+                    <div className="w-full h-36 sm:h-48 shadow rounded-lg bg-gray-50 p-2.5">
                         <img
                             src={data.thumbnail}
                             alt={data.thumbnail}
-                            className="w-28 lg:w-40 h-full rounded-lg object-cover"
+                            className="w-28 sm:w-40 h-full rounded-lg object-cover"
                         />
                     </div>
 
                     <div
-                        className="w-full shadow rounded-lg bg-gray-50 p-2.5 h-48 flex flex-col items-center space-y-2.5 mt-8 lg:mt-0">
+                        className="w-full shadow rounded-lg bg-gray-50 p-2.5 h-48 flex flex-col items-center space-y-2.5 mt-8 md:mt-0">
                         <DownloadItem
                             title="Download Thumbnail"
                             url={data.thumbnail}
@@ -100,7 +100,7 @@ const DownloadContainer: React.FC = () => {
                             setIsLoading={setIsLoading720p}
                         />
                         <DownloadItem
-                            title="Download Video 1080p (HD)"
+                            title="Download Video 1080p"
                             url={data.HD}
                             filename={randomFilename("1080p", "mp4")}
                             isLoading={isLoading1080p}
