@@ -1,9 +1,6 @@
 ---
-import {Language} from "../types/Language";
 import LanguageDropdown from "./LanguageDropdown.astro";
-import {consoleLogDestination} from "astro/dist/core/logger/console";
 interface Props {
-    languages: Language[];
     redirect: String | null;
     tiktokButtonTitle: String;
     facebookButtonTitle: String;
@@ -11,7 +8,6 @@ interface Props {
     languageButtonTitle: String;
 }
 const {
-    languages,
     redirect,
     tiktokButtonTitle,
     facebookButtonTitle,
@@ -74,7 +70,7 @@ const {
                         {languageButtonTitle}
                     </button>
 
-                   <LanguageDropdown languages={languages} redirect={redirect}/>
+                   <LanguageDropdown redirect={redirect}/>
                 </li>
             </ul>
         </div>
