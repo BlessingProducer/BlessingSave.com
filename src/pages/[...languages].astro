@@ -5,24 +5,40 @@ import Footer from "../components/Footer.astro";
 import Scrollbar from "../components/Scrollbar.astro";
 import SEOContainer from "../components/SEOContainer.astro";
 import en from "../languages/tiktok/en.json";
+import {LanguageArray} from "../types/LanguageArray";
 
-const languageCode = 'en'
+export async function getStaticPaths() {
+    return LanguageArray.map(language => ({
+        params: { languages: language.code }
+    }));
+}
+
+const {languages} = Astro.params;
+const languageCode = languages || 'en';
+
+let language;
+
+try {
+    language = await import(`../languages/tiktok/${languageCode}.json`);
+} catch (error) {
+    language = await import(`../languages/tiktok/en.json`);
+}
 
 const props = {
     lang: languageCode,
-    formTitle: en.form.formTitle,
-    formDescription: en.form.formDescription,
-    formPlaceholder: en.form.formPlaceholder,
-    formPasteButtonTitle: en.form.formPasteButtonTitle,
-    formClearButtonTitle: en.form.formClearButtonTitle,
-    formSubmitButtonTitle: en.form.formSubmitButtonTitle,
+    formTitle: language.form.formTitle,
+    formDescription: language.form.formDescription,
+    formPlaceholder: language.form.formPlaceholder,
+    formPasteButtonTitle: language.form.formPasteButtonTitle,
+    formClearButtonTitle: language.form.formClearButtonTitle,
+    formSubmitButtonTitle: language.form.formSubmitButtonTitle,
 }
 ---
 <Layout
         lang={languageCode}
         site="https://blessingsave.com"
-        title={en.site.title}
-        description={en.site.description}
+        title={language.site.title}
+        description={language.site.description}
 >
     <Scrollbar>
         <nav class="bg-white border-gray-200 shadow-sm dark:bg-gray-900 dark:border-gray-700">
@@ -43,7 +59,7 @@ const props = {
                         <li>
                             <a  href="/tt"
                                 class="block rounded-lg px-4 py-2 hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                {en.header.tiktokButtonTitle}</a>
+                                {language.header.tiktokButtonTitle}</a>
                         </li>
                         <!--<li>-->
                         <!--    <a href="https://blessingsave.com"-->
@@ -58,7 +74,7 @@ const props = {
                     </ul>
                 </div>
 
-                <a href="/"><span
+                <a href="/tt"><span
                         class="self-center text-2xl sm:text-3xl font-bold whitespace-nowrap text-pink-900 dark:text-white">Blessing<span
                         class="text-rose-500">Save</span></span></a>
 
@@ -76,7 +92,7 @@ const props = {
                         <li>
                             <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
                                     class="flex font-semibold text-base sm:text-xl items-center justify-between md:justify-end border-0 bg-rose-400 md:bg-transparent w-full py-2 px-3 text-white md:text-pink-900 rounded-lg hover:bg-white hover:text-rose-500 hover:ring-1 ring-pink-500 md:hover:ring-0 md:border-0 md:hover:text-rose-500 md:p-0 md:w-48 dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
-                                {en.header.languageButtonTitle}
+                                {language.header.languageButtonTitle}
                             </button>
 
                             <div id="dropdownNavbar"
@@ -238,12 +254,12 @@ const props = {
                 client:load {...props}
         />
         <SEOContainer
-                firstIntroduce={en.SEOContainer.introduce.first}
-                secondIntroduce={en.SEOContainer.introduce.second}
-                featuresTitle={en.SEOContainer.feature.title}
-                featuresContents={en.SEOContainer.feature.contents}
-                FAQTitle={en.SEOContainer.faq.title}
-                FAQItems={en.SEOContainer.faq.items}
+                firstIntroduce={language.SEOContainer.introduce.first}
+                secondIntroduce={language.SEOContainer.introduce.second}
+                featuresTitle={language.SEOContainer.feature.title}
+                featuresContents={language.SEOContainer.feature.contents}
+                FAQTitle={language.SEOContainer.faq.title}
+                FAQItems={language.SEOContainer.faq.items}
         />
         <Footer/>
     </Scrollbar>
