@@ -1,11 +1,18 @@
 ---
+import {Language} from "../types/Language";
+import LanguageDropdown from "./LanguageDropdown.astro";
+import {consoleLogDestination} from "astro/dist/core/logger/console";
 interface Props {
+    languages: Language[];
+    redirect: String | null;
     tiktokButtonTitle: String;
     facebookButtonTitle: String;
     instagramButtonTitle: String;
     languageButtonTitle: String;
 }
 const {
+    languages,
+    redirect,
     tiktokButtonTitle,
     facebookButtonTitle,
     instagramButtonTitle,
@@ -26,19 +33,20 @@ const {
 
         <div id="dropdownFeature"
              class="z-10 w-full sm:w-56 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
-            <ul class="text-sm rounded-lg shadow text-gray-700 dark:text-gray-400 p-2" aria-labelledby="dropdownLargeButton">
+            <ul class="text-sm rounded-lg shadow text-gray-700 dark:text-gray-400 p-2"
+                aria-labelledby="dropdownLargeButton">
                 <li>
-                    <a  href="https://blessingsave.com"
+                    <a href=`https://blessingsave.com/tiktok`
                        class="block rounded-lg px-4 py-2 hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
                         {tiktokButtonTitle}</a>
                 </li>
                 <!--<li>-->
-                <!--    <a href="https://blessingsave.com"-->
+                <!--      <a href=`https://blessingsave.com/instagram`-->
                 <!--       class="block rounded-lg px-4 py-2 hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">-->
                 <!--        {facebookButtonTitle}</a>-->
                 <!--</li>-->
                 <!--<li>-->
-                <!--    <a href="#"-->
+                <!--      <a href=`https://blessingsave.com/facebook`-->
                 <!--       class="block rounded-lg px-4 py-2 hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">-->
                 <!--        {instagramButtonTitle}</a>-->
                 <!--</li>-->
@@ -66,156 +74,7 @@ const {
                         {languageButtonTitle}
                     </button>
 
-                    <div id="dropdownNavbar"
-                         class="hidden w-full sm:w-96 font-normal bg-white rounded-lg shadow dark:bg-gray-700">
-                        <ul class="p-2 text-sm rounded-lg shadow text-gray-700 dark:text-gray-400 grid grid-cols-2 gap-x-4"
-                            aria-labelledby="dropdownLargeButton">
-                            <li>
-                                <a href="/vi"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇻🇳 Tiếng Việt
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/en"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇺🇸 English
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/ar"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇸🇦 العربية
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/cs"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇨🇿 Čeština
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/de"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇩🇪 Deutsch
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/es"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇪🇸 Español
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/fa"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇮🇷 فارسی
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/fr"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇫🇷 Français
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/he"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇮🇱 עברית
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/hi"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇮🇳 हिंदी
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/id"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇮🇩 Bahasa Indonesia
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/it"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇮🇹 Italiano
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/ja"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇯🇵 日本語
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/ko"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇰🇷 한국어
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/ms"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇲🇾 Melayu
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/nl"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇳🇱 Nederlands
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/pl"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇵🇱 Polski
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/pt"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇵🇹 Português
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/ro"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇷🇴 Română
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/ru"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇷🇺 Русский
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/se"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇸🇪 Svenska
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/th"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇹🇭 ไทย
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/tr"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇹🇷 Türkçe
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/zh"
-                                   class="flex items-center px-3 py-2 rounded-lg hover:bg-rose-300 text-rose-500 hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">
-                                    🇨🇳 中文
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                   <LanguageDropdown languages={languages} redirect={redirect}/>
                 </li>
             </ul>
         </div>

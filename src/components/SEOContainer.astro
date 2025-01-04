@@ -2,22 +2,29 @@
 import SEOTitle from "./SEOTitle.astro";
 import SEOContent from "./SEOContent.astro";
 import FAQItem from "./FAQItem.astro";
+
 class FAQItemModel {
-    id:string;
+    id: string;
     question: string;
     answer: string
 }
+
+class Introduce {
+    title: string;
+    content: string;
+}
+
 interface Props {
-    introduceTitle: String;
-    introduceContent: String;
+    firstIntroduce: Introduce;
+    secondIntroduce: Introduce;
     featuresTitle: String;
     featuresContents: String[];
     FAQTitle: String;
     FAQItems: FAQItemModel[]
 }
 const {
-    introduceTitle,
-    introduceContent,
+    firstIntroduce,
+    secondIntroduce,
     featuresTitle,
     featuresContents,
     FAQTitle,
@@ -26,15 +33,18 @@ const {
 ---
 <main>
     <div class="mx-auto my-10 px-3 py-5 lg:px-36">
-        <SEOTitle content={introduceTitle}/>
-        <SEOContent content={introduceContent}/>
+        <SEOTitle content={firstIntroduce.title}/>
+        <SEOContent content={firstIntroduce.content}/>
+
+        <SEOTitle content={secondIntroduce.title}/>
+        <SEOContent content={secondIntroduce.content}/>
+
         <SEOTitle content={featuresTitle}/>
         {featuresContents && featuresContents.map((item: any) => (
                 <SEOContent content={item}/>
         ))}
 
         <SEOTitle content={FAQTitle}/>
-
         <div id="accordion-flush"
              data-accordion="collapse"
              itemscope

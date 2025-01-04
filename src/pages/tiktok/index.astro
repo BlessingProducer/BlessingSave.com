@@ -1,12 +1,12 @@
 ---
-import Layout from '../layouts/tiktok/Layout.astro';
-import App from "../App";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import Scrollbar from "../components/Scrollbar.astro";
-import SEOContainer from "../components/SEOContainer.astro";
-import en from "../languages/tiktok/en.json";
-import {LanguageArray} from "../types/LanguageArray";
+import Layout from '../../layouts/tiktok/Layout.astro';
+import App from "../../App";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import Scrollbar from "../../components/Scrollbar.astro";
+import SEOContainer from "../../components/SEOContainer.astro";
+import en from "../../languages/tiktok/en.json";
+import {LanguageArray} from "../../types/LanguageArray";
 
 const props = {
     formTitle: en.form.formTitle,
@@ -19,14 +19,14 @@ const props = {
 ---
 <Layout
         lang="en"
-        site="https://blessingsave.com"
+        site="https://blessingsave.com/tiktok"
         title={en.site.title}
         description={en.site.description}
 >
     <Scrollbar>
         <Header
                 languages={LanguageArray}
-                redirect={null}
+                redirect="tiktok"
                 tiktokButtonTitle={en.header.tiktokButtonTitle}
                 facebookButtonTitle={en.header.facebookButtonTitle}
                 instagramButtonTitle={en.header.instagramButtonTitle}

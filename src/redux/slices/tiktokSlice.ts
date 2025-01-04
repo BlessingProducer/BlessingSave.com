@@ -6,9 +6,9 @@ const endpoint = 'tiktok';
 
 interface Data {
     thumbnail: string;
-    WVGA: string;
-    DVGA: string;
-    HD: string;
+    music: string;
+    hd: string;
+    full_hd: string;
 }
 
 interface RejectValue {

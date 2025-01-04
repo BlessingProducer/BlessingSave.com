@@ -3,11 +3,11 @@ import {FaPaste} from "react-icons/fa";
 import {AiOutlineClear} from "react-icons/ai";
 import {MdOutlineFileDownload} from "react-icons/md";
 import {MdError} from "react-icons/md";
-import stateStatus from "../utils/stateStatus";
+import stateStatus from "../../utils/stateStatus";
 import {useDispatch, useSelector} from "react-redux";
-import {postUrl, resetPostUrlState} from "../redux/slices/tiktokSlice";
-import type {AppDispatch, RootState} from "../redux/store.ts";
-import Loading from "./Loading";
+import {postUrl, resetPostUrlState} from "../../redux/slices/tiktokSlice";
+import type {AppDispatch, RootState} from "../../redux/store.ts";
+import Loading from "../Loading";
 
 interface Props {
     lang: string;
@@ -71,15 +71,15 @@ const InputForm: React.FC<Props> = ({
     }
 
     return (
-        <div className="flex flex-col justify-center items-center bg-rose-400 dark:bg-white py-14">
+        <div className="flex flex-col justify-center items-center bg-rose-400 dark:bg-white py-12 sm:py-16">
             <h1 className="text-2xl sm:text-4xl text-white dark:text-gray-800 font-semibold">
                 {title}
             </h1>
-            <p className="instructions mt-4 text-lg sm:text-2xl text-white dark:text-gray-800">
+            <p className="instructions mt-3 text-lg sm:text-2xl text-white dark:text-gray-800">
                 {instructions}
             </p>
             <form
-                className={"mt-5 w-full sm:w-4/5 lg:w-3/4 xl:w-1/2 px-3 flex flex-col sm:flex-row justify-center items-start"}>
+                className={"mt-6 w-full sm:w-4/5 lg:w-3/4 xl:w-1/2 px-3 flex flex-col sm:flex-row justify-center items-start"}>
                 <div className="flex rounded-lg w-full">
                     <div className={"w-full"}>
                         <div className="w-full flex justify-center items-center">
