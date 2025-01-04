@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/tiktok/Layout.astro';
 import App from "../../App";
-import Header from "../../components/Header.astro";
+import Header from "../../components/tiktok/Header.astro";
 import Footer from "../../components/Footer.astro";
 import Scrollbar from "../../components/Scrollbar.astro";
 import SEOContainer from "../../components/SEOContainer.astro";
@@ -24,7 +24,6 @@ const props = {
 >
     <Scrollbar>
         <Header
-                redirect="tiktok"
                 tiktokButtonTitle={en.header.tiktokButtonTitle}
                 facebookButtonTitle={en.header.facebookButtonTitle}
                 instagramButtonTitle={en.header.instagramButtonTitle}
