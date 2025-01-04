@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import type {AppDispatch, RootState} from "../redux/store.ts";
-import {resetPostUrlState} from "../redux/slices/tiktokSlice";
-import DownloadButton from "./DownloadButton";
-import DownloadTitle from "./DownloadTitle";
-import {randomFilename} from "../utils/randomFilename";
+import type {AppDispatch, RootState} from "../../redux/store.ts";
+import {resetPostUrlState} from "../../redux/slices/tiktokSlice";
+import DownloadButton from "../DownloadButton";
+import DownloadTitle from "../DownloadTitle";
+import {randomFilename} from "../../utils/randomFilename";
 
 const handleDownload = async (
     url: string,
@@ -29,7 +29,7 @@ const handleDownload = async (
     } finally {
         setTimeout(() => {
             setIsLoading(false);
-        }, 3000);
+        }, 1000);
     }
 };
 
@@ -43,7 +43,7 @@ interface DownloadItemProps {
 
 const DownloadItem: React.FC<DownloadItemProps> = ({title, url, filename, isLoading, setIsLoading}) => (
     <div className="h-full w-full flex justify-between items-center space-x-5">
-        <div className={"w-full border-e-2 border-rose-300"}>
+        <div className={"w-full p-0.5 border-e-2 border-rose-300"}>
             <DownloadTitle title={title}/>
         </div>
         <DownloadButton isLoading={isLoading} onClick={async () => await handleDownload(url, filename, setIsLoading)}/>
@@ -55,9 +55,9 @@ const DownloadContainer: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
 
     const [isLoadingThumbnail, setIsLoadingThumbnail] = useState<boolean>(false);
-    const [isLoading480p, setIsLoading480p] = useState<boolean>(false);
-    const [isLoading720p, setIsLoading720p] = useState<boolean>(false);
-    const [isLoading1080p, setIsLoading1080p] = useState<boolean>(false);
+    const [isLoadingMusic, setIsLoadingMusic] = useState<boolean>(false);
+    const [isLoadingHd, setIsLoadingHd] = useState<boolean>(false);
+    const [isLoadingFullHd, setIsLoadingFullHd] = useState<boolean>(false);
 
     const handleDownloadMore = () => {
         dispatch(resetPostUrlState())
@@ -79,32 +79,32 @@ const DownloadContainer: React.FC = () => {
                     <div
                         className="w-full shadow rounded-lg bg-gray-50 p-2.5 h-48 flex flex-col items-center space-y-2.5 mt-8 md:mt-0">
                         <DownloadItem
-                            title="Download Thumbnail"
+                            title="Thumbnail"
                             url={data.thumbnail}
                             filename={randomFilename("Thumbnail", "jpg")}
                             isLoading={isLoadingThumbnail}
                             setIsLoading={setIsLoadingThumbnail}
                         />
                         <DownloadItem
-                            title="Download Video 480p"
-                            url={data.WVGA}
-                            filename={randomFilename("480p", "mp4")}
-                            isLoading={isLoading480p}
-                            setIsLoading={setIsLoading480p}
+                            title="Mp3 Music"
+                            url={data.music}
+                            filename={randomFilename("Mp3", "mp3")}
+                            isLoading={isLoadingMusic}
+                            setIsLoading={setIsLoadingMusic}
                         />
                         <DownloadItem
-                            title="Download Video 720p"
-                            url={data.DVGA}
-                            filename={randomFilename("720p", "mp4")}
-                            isLoading={isLoading720p}
-                            setIsLoading={setIsLoading720p}
+                            title="HD Video"
+                            url={data.hd}
+                            filename={randomFilename("Hd", "mp4")}
+                            isLoading={isLoadingHd}
+                            setIsLoading={setIsLoadingHd}
                         />
                         <DownloadItem
-                            title="Download Video 1080p"
-                            url={data.HD}
-                            filename={randomFilename("1080p", "mp4")}
-                            isLoading={isLoading1080p}
-                            setIsLoading={setIsLoading1080p}
+                            title="Full HD Video"
+                            url={data.full_hd}
+                            filename={randomFilename("FullHd", "mp4")}
+                            isLoading={isLoadingFullHd}
+                            setIsLoading={setIsLoadingFullHd}
                         />
                     </div>
                 </div>

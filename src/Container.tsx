@@ -1,8 +1,8 @@
 import React from 'react'
-import InputForm from "./components/InputForm";
+import InputForm from "./components/tiktok/InputForm";
 import {useSelector} from "react-redux";
 import type {RootState} from "./redux/store.ts";
-import DownloadContainer from "./components/DownloadContainer";
+import DownloadContainer from "./components/tiktok/DownloadContainer";
 
 interface Props {
     lang:string;
