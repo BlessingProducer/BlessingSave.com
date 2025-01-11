@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import type {AppDispatch, RootState} from "../../redux/store.ts";
-import {resetPostUrlState} from "../../redux/slices/tiktokSlice";
+import {resetPostUrlState} from "../../redux/slices/instagramSlice";
 import DownloadButton from "../DownloadButton";
 import DownloadTitle from "../DownloadTitle";
 import {randomFilename} from "../../utils/randomFilename";
+import axiosClient from "../../network/axiosClient";
+import {apiUrl} from "../../utils/apiUrl";
 
 const handleDownload = async (
     url: string,
@@ -13,17 +15,25 @@ const handleDownload = async (
 ) => {
     try {
         setIsLoading(true);
-        const response = await fetch(url);
-        const blob = await response.blob();
-        const blobUrl = window.URL.createObjectURL(blob);
+        const response = await axiosClient.get(`/download/${url}`, {
+            responseType: 'blob'
+        });
 
-        const a = document.createElement("a");
-        a.href = blobUrl;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        window.URL.revokeObjectURL(blobUrl);
+        if (response.status === 200) {
+            const blob = new Blob([response.data], { type: response.data.type });
+
+            const downloadUrl = window.URL.createObjectURL(blob);
+
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(downloadUrl);
+        } else {
+            console.error('Failed to download file:', response.status);
+        }
     } catch (error) {
         console.error("Download failed:", error);
     } finally {
@@ -43,19 +53,19 @@ interface DownloadItemProps {
 
 const DownloadItem: React.FC<DownloadItemProps> = ({title, url, filename, isLoading, setIsLoading}) => (
     <div className="h-full w-full flex justify-between items-center space-x-5">
-        <div className={"w-full p-0.5 border-e-2 border-rose-300"}>
-            <DownloadTitle title={title} textColor={''}/>
+        <div className={"w-full p-0.5 border-e-2 border-fuchsia-700"}>
+            <DownloadTitle title={title} textColor={'text-fuchsia-700'}/>
         </div>
         <DownloadButton
             isLoading={isLoading}
             onClick={async () => await handleDownload(url, filename, setIsLoading)}
-            bgColor={''}
-            hoverBgColor={''}/>
+            bgColor={'bg-fuchsia-700'}
+            hoverBgColor={'hover:bg-fuchsia-950'}/>
     </div>
 );
 
 const DownloadContainer: React.FC = () => {
-    const data = useSelector((state: RootState) => state.tiktok.data);
+    const data = useSelector((state: RootState) => state.instagram.data);
     const dispatch = useDispatch<AppDispatch>();
 
     const [isLoadingThumbnail, setIsLoadingThumbnail] = useState<boolean>(false);
@@ -74,7 +84,7 @@ const DownloadContainer: React.FC = () => {
                     className="w-full h-[500px] flex flex-col md:flex-row items-center justify-center md:justify-between md:space-x-32">
                     <div className="w-full h-36 sm:h-48 shadow rounded-lg bg-gray-50 p-2.5">
                         <img
-                            src={data.thumbnail}
+                            src={`${apiUrl}/downloads/${data.thumbnail}`}
                             alt={data.thumbnail}
                             className="w-28 sm:w-40 h-full rounded-lg object-cover"
                         />
@@ -119,7 +129,7 @@ const DownloadContainer: React.FC = () => {
                 onClick={handleDownloadMore}
                 className={"w-full"}>
                 <p
-                    className={"h-full bg-gray-100 text-rose-500 rounded-full p-2 flex justify-center items-center shadow-sm hover:bg-rose-500 hover:text-white"}>
+                    className={"h-full bg-gray-100 text-fuchsia-700 rounded-full p-2 flex justify-center items-center shadow-sm hover:bg-fuchsia-900 hover:text-white"}>
                     Download more
                 </p>
             </button>

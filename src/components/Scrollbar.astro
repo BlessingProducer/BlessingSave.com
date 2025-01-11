@@ -1,7 +1,12 @@
 ---
-
+interface Props {
+    color: string;
+}
+const {color} = Astro.props;
 ---
-<div class="h-screen overflow-y-auto scrollbar-thin
-  scrollbar-thumb-rose-400 scrollbar-track-gray-100">
+<div class={
+    `h-screen flex flex-col overflow-y-auto scrollbar-thin
+  ${color ? color : 'scrollbar-thumb-rose-400'} scrollbar-track-gray-100`
+}>
     <slot/>
 </div>

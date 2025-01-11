@@ -15,6 +15,10 @@ class Introduce {
 }
 
 interface Props {
+    titleTextColor:string;
+    contentTextColor:string;
+    faqBgColor:string;
+    faqTextColor:string;
     firstIntroduce: Introduce;
     secondIntroduce: Introduce;
     featuresTitle: String;
@@ -23,6 +27,10 @@ interface Props {
     FAQItems: FAQItemModel[]
 }
 const {
+    titleTextColor,
+    contentTextColor,
+    faqBgColor,
+    faqTextColor,
     firstIntroduce,
     secondIntroduce,
     featuresTitle,
@@ -33,18 +41,18 @@ const {
 ---
 <main>
     <div class="mx-auto my-10 px-3 py-5 lg:px-36">
-        <SEOTitle content={firstIntroduce.title}/>
-        <SEOContent content={firstIntroduce.content}/>
+        <SEOTitle content={firstIntroduce.title} textColor={titleTextColor}/>
+        <SEOContent content={firstIntroduce.content} textColor={contentTextColor}/>
 
-        <SEOTitle content={secondIntroduce.title}/>
-        <SEOContent content={secondIntroduce.content}/>
+        <SEOTitle content={secondIntroduce.title} textColor={titleTextColor}/>
+        <SEOContent content={secondIntroduce.content} textColor={contentTextColor}/>
 
-        <SEOTitle content={featuresTitle}/>
+        <SEOTitle content={featuresTitle} textColor={titleTextColor}/>
         {featuresContents && featuresContents.map((item: any) => (
-                <SEOContent content={item}/>
+                <SEOContent content={item} textColor={contentTextColor}/>
         ))}
 
-        <SEOTitle content={FAQTitle}/>
+        <SEOTitle content={FAQTitle} textColor={titleTextColor}/>
         <div id="accordion-flush"
              data-accordion="collapse"
              itemscope
@@ -54,6 +62,8 @@ const {
                             id={item.id}
                             question={item.question}
                             answer={item.answer}
+                            bgColor={faqBgColor}
+                            textColor={faqTextColor}
                     />
             ))}
         </div>

@@ -3,18 +3,19 @@ interface Props {
     lang: string;
     site: string;
     title: string;
-    description: string
+    description: string;
+    image?: string;
 }
 
-const {lang, site, title, description} = Astro.props;
-const image = "/logo.webp";
----
+const {lang, site, title, description, image} = Astro.props;
 
+const defaultImage = image || '/logo.webp';
+---
 <!doctype html>
 <html lang={lang}>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="google" content="notranslate"/>
     <meta name="robots" content="index, follow"/>
 
@@ -24,25 +25,25 @@ const image = "/logo.webp";
             async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2654786155149859"
             crossorigin="anonymous"></script>
 
-    <meta itemprop="image" content=""/>
+    <meta itemprop="image" content={defaultImage}/>
     <title>{title}</title>
     <meta name="description" content={description}/>
-    <link rel="icon" type="image/svg+xml" href={image}/>
+    <link rel="icon" type="image/svg+xml" href={defaultImage}/>
 
     <meta name="twitter:card" content={site}/>
     <meta name="twitter:title" content={title}/>
     <meta name="twitter:description" content={description}/>
-    <meta name="twitter:image:src" content={image}/>
+    <meta name="twitter:image:src" content={defaultImage}/>
     <meta name="twitter:site" content={site}/>
 
     <meta property="og:title" content={title}/>
     <meta property="og:type" content="article"/>
-    <meta property="og:image" content={image}/>
+    <meta property="og:image" content={defaultImage}/>
     <meta property="og:description" content={description}/>
     <meta property="og:site_name" content={site}/>
 
-    <link rel="apple-touch-icon" sizes="192x192" href={image}/>
-    <link rel="shortcut icon" sizes="192x192" href={image}/>
+    <link rel="apple-touch-icon" sizes="192x192" href={defaultImage}/>
+    <link rel="shortcut icon" sizes="192x192" href={defaultImage}/>
 
     <link rel="alternate" hreflang="x-default" href={site}/>
     <link rel="canonical" href={site}/>
@@ -73,7 +74,7 @@ const image = "/logo.webp";
 
     <meta name="generator" content={Astro.generator}/>
     <link rel="stylesheet" href="/stylesheet/styles.css"/>
-    <script src="../../../node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="../../node_modules/flowbite/dist/flowbite.min.js"></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VTRLS6GNTH"></script>
@@ -96,4 +97,3 @@ const image = "/logo.webp";
 <slot/>
 </body>
 </html>
-

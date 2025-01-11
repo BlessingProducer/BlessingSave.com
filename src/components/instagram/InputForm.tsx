@@ -5,7 +5,7 @@ import {MdOutlineFileDownload} from "react-icons/md";
 import {MdError} from "react-icons/md";
 import stateStatus from "../../utils/stateStatus";
 import {useDispatch, useSelector} from "react-redux";
-import {postUrl, resetPostUrlState} from "../../redux/slices/tiktokSlice";
+import {postUrl, resetPostUrlState} from "../../redux/slices/instagramSlice";
 import type {AppDispatch, RootState} from "../../redux/store.ts";
 import Loading from "../Loading";
 
@@ -32,8 +32,8 @@ const InputForm: React.FC<Props> = ({
 
     const [url, setUrl] = useState<string | null>(null);
 
-    const postUrlStatus = useSelector((state: RootState) => state.tiktok.postUrlStatus);
-    const postUrlError = useSelector((state: RootState) => state.tiktok.postUrlError);
+    const postUrlStatus = useSelector((state: RootState) => state.instagram.postUrlStatus);
+    const postUrlError = useSelector((state: RootState) => state.instagram.postUrlError);
 
     const handlePaste = async () => {
         try {
@@ -66,12 +66,12 @@ const InputForm: React.FC<Props> = ({
 
     const handleSubmit = () => {
         if (url && url.trim() !== "") {
-            dispatch(postUrl({url,lang}))
+            dispatch(postUrl({url, lang}))
         }
     }
 
     return (
-        <div className="flex flex-col justify-center items-center bg-rose-400 dark:bg-white pt-9 pb-12 sm:py-16">
+        <div className="flex flex-col justify-center items-center instagram-form dark:bg-white pt-9 pb-12 sm:py-16">
             <h1 className="text-2xl sm:text-4xl text-white dark:text-gray-800 font-semibold">
                 {title}
             </h1>
@@ -84,7 +84,7 @@ const InputForm: React.FC<Props> = ({
                     <div className={"w-full"}>
                         <div className="w-full flex justify-center items-center">
                             <input type="url"
-                                   className="rounded-s-lg w-full py-2.5 text-sm text-rose-500 placeholder:text-rose-500 bg-gray-50 border-none focus:ring-0 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                                   className="rounded-s-lg w-full py-2.5 text-sm text-fuchsia-600 placeholder:text-fuchsia-600 bg-gray-50 border-none focus:ring-0 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                                    placeholder={formPlaceholder}
                                    required
                                    value={url ? url : ""}
@@ -94,7 +94,7 @@ const InputForm: React.FC<Props> = ({
                                    }}/>
                             <button type="button"
                                     onClick={url ? handleClear : handlePaste}
-                                    className="flex items-center justify-center top-0 end-0 py-2.5 w-32 h-full text-sm font-medium text-white bg-pink-950 hover:bg-pink-900 rounded-e-lg dark:bg-gray-800 dark:hover:bg-blue-700">
+                                    className="flex items-center justify-center top-0 end-0 py-2.5 w-32 h-full text-sm font-medium text-white bg-sky-500 hover:bg-blue-500 rounded-e-lg dark:bg-gray-800 dark:hover:bg-blue-700">
                                 {url ? <AiOutlineClear className={"w-5 h-5"}/>
                                     : <FaPaste className={"w-4 h-4"}/>}
                                 <span
@@ -110,7 +110,7 @@ const InputForm: React.FC<Props> = ({
                     </div>
                 </div>
                 <button type="submit"
-                        className="mt-2.5 sm:ms-2 sm:mt-0 py-2.5 w-full sm:w-48 flex items-center justify-center text-white bg-pink-950 hover:bg-pink-900 font-medium rounded-lg text-sm dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none"
+                        className="mt-2.5 sm:ms-2 sm:mt-0 py-2.5 w-full sm:w-48 flex items-center justify-center text-white bg-sky-500 hover:bg-blue-500 font-medium rounded-lg text-sm dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none"
                         disabled={postUrlStatus === stateStatus.loadingState || url === null}
                         onClick={handleSubmit}>
                     {
