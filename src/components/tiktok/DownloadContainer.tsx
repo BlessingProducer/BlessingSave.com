@@ -82,34 +82,42 @@ const DownloadContainer: React.FC = () => {
 
                     <div
                         className="w-full shadow rounded-lg bg-gray-50 p-2.5 h-48 flex flex-col items-center space-y-2.5 mt-8 md:mt-0">
-                        <DownloadItem
-                            title="Thumbnail"
-                            url={data.thumbnail}
-                            filename={randomFilename("Thumbnail", "jpg")}
-                            isLoading={isLoadingThumbnail}
-                            setIsLoading={setIsLoadingThumbnail}
-                        />
-                        <DownloadItem
-                            title="Mp3 Music"
-                            url={data.music}
-                            filename={randomFilename("Mp3", "mp3")}
-                            isLoading={isLoadingMusic}
-                            setIsLoading={setIsLoadingMusic}
-                        />
-                        <DownloadItem
-                            title="HD Video"
-                            url={data.hd}
-                            filename={randomFilename("Hd", "mp4")}
-                            isLoading={isLoadingHd}
-                            setIsLoading={setIsLoadingHd}
-                        />
-                        <DownloadItem
-                            title="Full HD Video"
-                            url={data.full_hd}
-                            filename={randomFilename("FullHd", "mp4")}
-                            isLoading={isLoadingFullHd}
-                            setIsLoading={setIsLoadingFullHd}
-                        />
+                        {
+                            data.thumbnail && <DownloadItem
+                                title="Thumbnail"
+                                url={data.thumbnail}
+                                filename={randomFilename("Thumbnail", "jpg")}
+                                isLoading={isLoadingThumbnail}
+                                setIsLoading={setIsLoadingThumbnail}
+                            />
+                        }
+                        {
+                            data.music && <DownloadItem
+                                title="Mp3 Music"
+                                url={data.music}
+                                filename={randomFilename("Mp3", "mp3")}
+                                isLoading={isLoadingMusic}
+                                setIsLoading={setIsLoadingMusic}
+                            />
+                        }
+                        {
+                            data.hd && <DownloadItem
+                                title="HD Video"
+                                url={data.hd}
+                                filename={randomFilename("Hd", "mp4")}
+                                isLoading={isLoadingHd}
+                                setIsLoading={setIsLoadingHd}
+                            />
+                        }
+                        {
+                            data.full_hd && <DownloadItem
+                                title="Full HD Video"
+                                url={data.full_hd}
+                                filename={randomFilename("FullHd", "mp4")}
+                                isLoading={isLoadingFullHd}
+                                setIsLoading={setIsLoadingFullHd}
+                            />
+                        }
                     </div>
                 </div>
             ) : (
