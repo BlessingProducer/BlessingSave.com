@@ -1,8 +1,10 @@
 import {combineReducers} from "@reduxjs/toolkit";
-import tiktokSlice from "./slices/tiktokSlice.ts";
+import tiktokSlice from "./slices/tiktokSlice";
+import instagramSlice from "./slices/instagramSlice";
 
 const rootSlice = combineReducers({
-    tiktok: tiktokSlice
+    tiktok: tiktokSlice,
+    instagram: instagramSlice,
 });
 
 export default rootSlice;

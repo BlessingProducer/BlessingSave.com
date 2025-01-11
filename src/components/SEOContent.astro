@@ -1,9 +1,10 @@
 ---
 interface Props {
-    content: string
+    content: string;
+    textColor: string;
 }
 
-const {content} = Astro.props;
+const {content, textColor} = Astro.props;
 ---
 
-<p class="mt-2 ms-4 text-base text-rose-900 dark:text-white">{content}</p>
+<p class={`mt-2 ms-4 text-base ${textColor ? textColor : 'text-rose-900'} dark:text-white`}>{content}</p>

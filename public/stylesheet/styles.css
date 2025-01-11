@@ -1,20 +1,31 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  scrollbar-width: thin;
-  scrollbar-color: #fb7185 #fb7185;
+    scrollbar-width: thin;
+    scrollbar-color: #fb7185 #fb7185;
+}
+
+.instagram-form, .ig-faq-bg, .ig-footer-color {
+    background: linear-gradient(to bottom right, #f9ce34, #ee2a7b, #6228d7);
+}
+
+.ig-logo {
+    background: linear-gradient(to bottom right, #f9ce34, #ee2a7b, #6228d7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
 }
 
 html[lang="ar"] h1, html[lang="fa"] h1, html[lang="he"] h1,
 html[lang="ar"] h2, html[lang="fa"] h2, html[lang="he"] h2,
 html[lang="ar"] h3, html[lang="fa"] h3, html[lang="he"] h3,
-html[lang="ar"] p, html[lang="fa"] p, html[lang="he"] p{
-  direction: rtl;
-  text-align: right;
+html[lang="ar"] p, html[lang="fa"] p, html[lang="he"] p {
+    direction: rtl;
+    text-align: right;
 }
 
 

@@ -1,8 +1,8 @@
 import React from 'react'
-import InputForm from "./components/tiktok/InputForm";
+import InputForm from "./InputForm";
 import {useSelector} from "react-redux";
-import type {RootState} from "./redux/store.ts";
-import DownloadContainer from "./components/tiktok/DownloadContainer";
+import type {RootState} from "../../redux/store.ts";
+import DownloadContainer from "./DownloadContainer";
 
 interface Props {
     lang:string;
@@ -23,7 +23,7 @@ const Container: React.FC<Props> = ({
                                         formClearButtonTitle,
                                         formSubmitButtonTitle,
                                     }) => {
-    const data = useSelector((state: RootState) => state.tiktok.data);
+    const data = useSelector((state: RootState) => state.instagram.data);
     return (
         <div>
             {

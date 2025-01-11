@@ -5,12 +5,14 @@ import Loading from "./Loading";
 interface Props {
     isLoading: boolean;
     onClick: () => void;
+    bgColor: string;
+    hoverBgColor: string;
 }
 
-const DownloadButton: React.FC<Props> = ({isLoading, onClick}) => {
+const DownloadButton: React.FC<Props> = ({isLoading, onClick, bgColor, hoverBgColor}) => {
     return (
         <button
-            className="w-24 p-2 text-white flex justify-center shadow-sm bg-rose-500 hover:bg-pink-900 rounded-lg dark:bg-gray-800 dark:hover:bg-blue-700"
+            className={`w-24 p-2 text-white flex justify-center shadow-sm ${bgColor && hoverBgColor ? bgColor + ' ' + hoverBgColor : 'bg-rose-500 hover:bg-pink-900'} rounded-lg dark:bg-gray-800 dark:hover:bg-blue-700`}
             onClick={onClick}
             disabled={isLoading}
         >

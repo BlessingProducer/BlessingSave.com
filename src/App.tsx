@@ -1,10 +1,12 @@
 import React from 'react';
 import {Provider} from "react-redux";
 import store from "./redux/store";
-import Container from "./Container";
+import TikTokContainer from "./components/tiktok/Container";
+import InstagramContainer from "./components/instagram/Container";
 
 interface Props {
-    lang:string;
+    lang: string;
+    type: string;
     formTitle: string;
     formDescription: string;
     formPlaceholder: string;
@@ -14,7 +16,8 @@ interface Props {
 }
 
 const App: React.FC<Props> = ({
-    lang,
+                                  lang,
+                                  type,
                                   formTitle,
                                   formDescription,
                                   formPlaceholder,
@@ -26,14 +29,25 @@ const App: React.FC<Props> = ({
         <Provider store={store}>
             <div
                 className="w-full overflow-hidden">
-                <Container
-                    lang={lang}
-                    formTitle={formTitle}
-                    formDescription={formDescription}
-                    formPlaceholder={formPlaceholder}
-                    formPasteButtonTitle={formPasteButtonTitle}
-                    formClearButtonTitle={formClearButtonTitle}
-                    formSubmitButtonTitle={formSubmitButtonTitle}/>
+                {type === "ig" ? (
+                    <InstagramContainer
+                        lang={lang}
+                        formTitle={formTitle}
+                        formDescription={formDescription}
+                        formPlaceholder={formPlaceholder}
+                        formPasteButtonTitle={formPasteButtonTitle}
+                        formClearButtonTitle={formClearButtonTitle}
+                        formSubmitButtonTitle={formSubmitButtonTitle}/>
+                ):(
+                    <TikTokContainer
+                        lang={lang}
+                        formTitle={formTitle}
+                        formDescription={formDescription}
+                        formPlaceholder={formPlaceholder}
+                        formPasteButtonTitle={formPasteButtonTitle}
+                        formClearButtonTitle={formClearButtonTitle}
+                        formSubmitButtonTitle={formSubmitButtonTitle}/>
+                )}
             </div>
         </Provider>
     );
